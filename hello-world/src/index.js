@@ -42,6 +42,7 @@ const posts = [
 
 function ListItem(props) {
   // Correct. There is no need to specify the key here:
+  console.log(props.key);//Upon attempt to output prop key - wil get undefined
   return <li>{props.value}</li>
 }
 
