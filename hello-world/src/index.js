@@ -3,18 +3,21 @@ import ReactDOM from 'react-dom';
 //import App from './App';
 //import './index.css';
 
+
+
 function NumberList(props) {
   const numbers = props.numbers;
   const listItems = numbers.map((number) =>
-    <li>Item {number}</li>
-);
+    <li key={number.id}>{number.text}</li>
+  );
   console.log(listItems);
   return (
     <ul>{listItems}</ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
+//Create array of objects with properties: id, text.
+const numbers = [1, 2, 3, 4, 5].map(item =>
+  ({id: item, text: `Item ${item}`}));
 
 function WarningBanner(props) {
   if (!props.warn) {
