@@ -3,11 +3,41 @@ import ReactDOM from 'react-dom';
 //import App from './App';
 //import './index.css';
 
-function MyInput(){
+class Form extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  } 
+  
+  handleSubmit(event) {
+    alert('Text field value is: ' + this.state.value);
+  }
+ 
+  render(){
+    return (
+      <div>
+        <MyInput value={this.state.value} handler={this.handleChange} />      
+        <button onClick={this.handleSubmit}>
+          Submit
+        </button>
+      </div> 
+    );
+  }
+}
+
+function MyInput(props){
   return (
-    <input
-      type="text"
-      value="Hello!" />
+     <input
+       type="text"
+       placeholder="Hello!"
+       value={props.value}
+       onChange={props.handler} />
   );
 }
 
@@ -205,7 +235,8 @@ function App(){
     <Clock />
     <Mailbox unreadMessages={messages} />
     <Page /> 
-    <MyInput />
+    <br /><hr />
+    <Form />
     </div>
   );
 }
