@@ -3,11 +3,19 @@ import ReactDOM from 'react-dom';
 //import App from './App';
 //import './index.css';
 
-const numbers = [1, 2, 3, 4, 5];
-const listItems = numbers.map((number) =>
+function NumberList(props) {
+  const numbers = props.numbers;
+  const listItems = numbers.map((number) =>
     <li>Item {number}</li>
 );
-console.log(listItems);
+  console.log(listItems);
+  return (
+    <ul>{listItems}</ul>
+  );
+}
+
+const numbers = [1, 2, 3, 4, 5];
+
 function WarningBanner(props) {
   if (!props.warn) {
     return null;
@@ -139,7 +147,7 @@ function App(){
     <div>
     <LoginControl />
     <Clock />
-    <ul>{listItems}</ul>
+    <NumberList numbers={numbers} />
     <Clock />
     <Toggle />
     <Clock />
