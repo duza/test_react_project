@@ -6,15 +6,18 @@ import ReactDOM from 'react-dom';
 class Form extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: ''};
+    this.state = {value: '', value2: '', value3: ''};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleClearClick = this.handleClearClick.bind(this);
+    this.handleUncontrol = this.handleUncontrol.bind(this);
+    this.handleTextArea = this.handleTextArea.bind(this);
   }
 
   handleChange(event) {
     this.setState({
-      value: event.target.value.substr(0, 140)});
+      value: event.target.value.substr(0, 140)
+    });
   } 
   
   handleSubmit(event) {
@@ -23,17 +26,44 @@ class Form extends React.Component {
   
   handleClearClick() {
     this.setState({
-      value: ''
+     value: ''
     });
   }
- 
+
+  handleUncontrol(event) {
+     this.setState({
+       value2: event.target.value
+     });
+  }
+  
+  handleTextArea(event) {
+    this.setState({
+      value3: event.target.value
+    });
+    console.log(this.state);
+  }
+
   render(){
     return (
       <div>
         <MyInput value={this.state.value} handler={this.handleChange} />      
         <button onClick={(e) => {this.handleSubmit(e); this.handleClearClick()}}>
           Submit
-        </button>
+        </button><br />
+       <input type="text" onClick={this.handleUncontrol} defaultValue="Hello2!" />
+       <br />
+       <label for="radio1">Test radio input
+       <input type="radio" id="radio1" defaultChecked /></label>
+       <br />
+       <select defaultValue="2" >
+         <option value="1">Javascript</option>
+         <option value="2">Python</option>
+       </select>
+       <br />
+       <label for="checkbox1">Checkbox for tests</label>
+       <input type="checkbox" id="checkbox1" defaultChecked />
+       <br />
+       <textarea name="description" value={this.state.value3} onChange={this.handleTextArea} />
       </div> 
     );
   }
