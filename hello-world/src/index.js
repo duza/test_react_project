@@ -12,7 +12,8 @@ class Form extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    this.setState({
+      value: event.target.value.substr(0, 140)});
   } 
   
   handleSubmit(event) {
