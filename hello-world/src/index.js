@@ -3,12 +3,16 @@ import ReactDOM from 'react-dom';
 //import App from './App';
 //import './index.css';
 
-
+function ListItem(props) {
+  // Correct. There is no need to specify the key here:
+  return <li>{props.value}</li>
+}
 
 function NumberList(props) {
   const numbers = props.numbers;
   const listItems = numbers.map((number) =>
-    <li key={number.id}>{number.text}</li>
+    // Correct. Key should be specified inside the array
+    <ListItem key={number.id} value={number.text} />
   );
   console.log(listItems);
   return (
