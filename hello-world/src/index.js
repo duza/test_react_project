@@ -8,15 +8,7 @@ function Blog(props) {
     <h2>Example using same keys(id)
        for create two different lists</h2>
   );
-  const sidebar = (
-    <ul>
-      {props.posts.map((post) =>
-        <li key={post.id}>
-          {post.title}
-        </li>
-      )}
-    </ul>
-  );
+  const listForSidebar = props.posts;
   const content = props.posts.map((post) =>
     <div key={post.id}>
       <h3>{post.title}</h3>
@@ -27,7 +19,13 @@ function Blog(props) {
     <div>
       <br />
       {header}
-      {sidebar}
+      <ul>
+        {listForSidebar.map((post) =>
+          <li key={post.id}>
+            {post.title}
+          </li>
+        )}
+      </ul>
       <hr />
       {content}
       <br />
