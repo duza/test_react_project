@@ -55,7 +55,7 @@ class Form extends React.Component {
        <label for="radio1">Test radio input
        <input type="radio" id="radio1" defaultChecked /></label>
        <br />
-       <select defaultValue="2" >
+       <select name="UncontrolSelect" defaultValue="2">
          <option value="1">Javascript</option>
          <option value="2">Python</option>
        </select>
@@ -64,6 +64,12 @@ class Form extends React.Component {
        <input type="checkbox" id="checkbox1" defaultChecked />
        <br />
        <textarea name="description" value={this.state.value3} onChange={this.handleTextArea} />
+       <br />
+      <select multiple={true} defaultValue={['B', 'C']}> 
+        <option value="A">Apple</option>
+        <option value="B">Banana</option>
+        <option value="C">Cranberry</option>
+      </select> 
       </div> 
     );
   }
