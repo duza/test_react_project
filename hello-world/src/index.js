@@ -3,6 +3,43 @@ import ReactDOM from 'react-dom';
 //import App from './App';
 //import './index.css';
 
+function Blog(props) {
+  const header = (
+    <h2>Example using same keys(id)
+       for create two different lists</h2>
+  );
+  const sidebar = (
+    <ul>
+      {props.posts.map((post) =>
+        <li key={post.id}>
+          {post.title}
+        </li>
+      )}
+    </ul>
+  );
+  const content = props.posts.map((post) =>
+    <div key={post.id}>
+      <h3>{post.title}</h3>
+      <p>{post.content}</p>
+    </div>
+  );
+  return (
+    <div>
+      <br />
+      {header}
+      {sidebar}
+      <hr />
+      {content}
+      <br />
+    </div>
+  );
+}
+
+const posts = [
+  {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
+  {id: 2, title: 'Installation', content: 'You can install React from npm.'}
+];
+
 function ListItem(props) {
   // Correct. There is no need to specify the key here:
   return <li>{props.value}</li>
@@ -153,6 +190,7 @@ function App(){
   return (
     <div>
     <LoginControl />
+    <Blog posts={posts} />
     <Clock />
     <NumberList numbers={numbers} />
     <Clock />
