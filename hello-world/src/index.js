@@ -3,6 +3,14 @@ import ReactDOM from 'react-dom';
 //import App from './App';
 //import './index.css';
 
+function MyInput(){
+  return (
+    <input
+      type="text"
+      value="Hello!" />
+  );
+}
+
 function Blog(props) {
   const header = (
     <h2>Example using same keys(id)
@@ -197,6 +205,7 @@ function App(){
     <Clock />
     <Mailbox unreadMessages={messages} />
     <Page /> 
+    <MyInput />
     </div>
   );
 }
