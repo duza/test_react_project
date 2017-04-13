@@ -9,6 +9,7 @@ class Form extends React.Component {
     this.state = {value: ''};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleClearClick = this.handleClearClick.bind(this);
   }
 
   handleChange(event) {
@@ -19,12 +20,18 @@ class Form extends React.Component {
   handleSubmit(event) {
     alert('Text field value is: ' + this.state.value);
   }
+  
+  handleClearClick() {
+    this.setState({
+      value: ''
+    });
+  }
  
   render(){
     return (
       <div>
         <MyInput value={this.state.value} handler={this.handleChange} />      
-        <button onClick={this.handleSubmit}>
+        <button onClick={(e) => {this.handleSubmit(e); this.handleClearClick()}}>
           Submit
         </button>
       </div> 
