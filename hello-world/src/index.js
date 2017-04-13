@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom';
 //import App from './App';
 //import './index.css';
 
+const numbers = [1, 2, 3, 4, 5];
+const listItems = numbers.map((number) =>
+    <li>Item {number}</li>
+);
+console.log(listItems);
 function WarningBanner(props) {
   if (!props.warn) {
     return null;
@@ -134,6 +139,7 @@ function App(){
     <div>
     <LoginControl />
     <Clock />
+    <ul>{listItems}</ul>
     <Clock />
     <Toggle />
     <Clock />
